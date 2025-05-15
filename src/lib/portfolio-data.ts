@@ -276,8 +276,7 @@ export const portfolioData: PortfolioData = {
     linkedinUser: "yasir-maqsood-linked",
   },
   aboutMe: {
-    description: "",
-    //description: "Analytical and solutions-oriented Software Engineer with a strong academic background in Data Science and practical experience in applied machine learning and cloud-native technologies. Demonstrated expertise in developing and deploying intelligent systems using Python, SQL and OpenCV, alongside robust skills in containerization (Docker, LXC), orchestration (Kubernetes), and infrastructure monitoring (Prometheus, Grafana, Loki). Proven contributor to real-world projects, with  hands-on experience in open-source networks (OpenBTS, SRSLTE, Open5Gs), edge computing, and AI-enabled platforms. Recognized for a proactive mindset, technical versatility, and dedication to driving innovation through data-driven methodologies.",
+    description: "Analytical and solutions-oriented Software Engineer with a strong academic background in Data Science and practical experience in applied machine learning and cloud-native technologies. Demonstrated expertise in developing and deploying intelligent systems using Python, SQL and OpenCV, alongside robust skills in containerization (Docker, LXC), orchestration (Kubernetes), and infrastructure monitoring (Prometheus, Grafana, Loki). Proven contributor to real-world projects, with  hands-on experience in open-source networks (OpenBTS, SRSLTE, Open5Gs), edge computing, and AI-enabled platforms. Recognized for a proactive mindset, technical versatility, and dedication to driving innovation through data-driven methodologies.",
     keywords: ["Software Engineer", "Data Analyst", "DevOps", "Researcher"],
   },
   workExperience: [
