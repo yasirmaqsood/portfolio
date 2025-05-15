@@ -17,7 +17,6 @@ export default function Home() {
       <ProjectsShowcaseSection />
       <SkillsSection />
       <ContactSection />
-      <AiCoverLetterGeneratorSection />
     </>
   );
 }
