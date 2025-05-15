@@ -15,7 +15,6 @@ import { useToast } from "@/hooks/use-toast";
 import { Wand2, Copy, Check } from "lucide-react";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Skeleton } from "@/components/ui/skeleton";
-import { useSearchParams } from 'next/navigation';
 
 const AI_ACCESS_KEY = "mode";
 const AI_ACCESS_VALUE = "developerPortfolioView";
@@ -28,8 +27,6 @@ const formSchema = z.object({
 type FormData = z.infer<typeof formSchema>;
 
 export function AiCoverLetterGeneratorSection() {
-  const searchParams = useSearchParams();
-  const showSection = searchParams.get(AI_ACCESS_KEY) === AI_ACCESS_VALUE;
 
   const [generatedLetter, setGeneratedLetter] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -80,9 +77,7 @@ export function AiCoverLetterGeneratorSection() {
     }
   };
 
-  if (!showSection) {
-    return null;
-  }
+
 
   return (
     <section id={sectionIds.aiTool} className="bg-background">

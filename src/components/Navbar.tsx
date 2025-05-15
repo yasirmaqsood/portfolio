@@ -17,7 +17,6 @@ interface NavItem {
 const AI_ACCESS_KEY = "mode";
 const AI_ACCESS_VALUE = "developerPortfolioView";
 
-// Helper component to wrap useSearchParams in Suspense
 
 
 export function Navbar() {
