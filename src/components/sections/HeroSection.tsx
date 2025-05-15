@@ -45,18 +45,17 @@ export function HeroSection() {
             </Button>
           </div>
         </div>
-        <div className="relative aspect-square w-96 h-96 mx-auto md:mx-0 md:order-last order-first">
+        <div className="relative aspect-square w-80 h-80 mx-auto md:mx-0 md:order-last order-first ">
           <Image
-            src="/image/Picture_white.jpeg"
+            src="/image/Picture_white.jpeg" // Correct path
             alt={contactInfo.name}
             fill
-            className="rounded-full object-cover shadow-2xl border-4 border-primary/20 z-0 scale-90 object-[50%_35%]"
+            className="rounded-full object-cover shadow-2xl border-4 border-primary/20 z-0"
             priority
             sizes="(max-width: 300px) 10vw, (max-width: 1000px) 10vw, 10vw"
             data-ai-hint="profile portrait"
-            style={{ objectFit: "cover", transform: "scale(0.8)" }}
           />
-          <div className="absolute bottom-0 right-0 md:bottom-3 md:right-1 flex space-x-4 bg-background/80 backdrop-blur-sm p-3 rounded-lg shadow-xl z-10">
+           <div className="absolute bottom-0 right-0 md:bottom-3 md:right-1 flex space-x-4 bg-background/80 backdrop-blur-sm p-3 rounded-lg shadow-xl z-10">
             <Link href={contactInfo.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
               <iconMapping.LinkedIn className="h-7 w-7 text-primary hover:text-accent transition-colors" />
             </Link>
