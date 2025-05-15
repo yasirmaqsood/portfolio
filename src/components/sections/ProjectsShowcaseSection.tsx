@@ -11,7 +11,7 @@ export function ProjectsShowcaseSection() {
   return (
     <section id={sectionIds.projects} className="bg-secondary">
       <div className="container mx-auto px-4 md:px-6">
-        <SectionTitle icon={Lightbulb}>Projects & Achievements</SectionTitle>
+        <SectionTitle icon={Lightbulb}>Publications & Certifications</SectionTitle>
         <Tabs defaultValue="publications" className="w-full">
           <TabsList className="grid w-full grid-cols-2 md:w-1/2 mx-auto mb-8">
             <TabsTrigger value="publications" className="gap-2">

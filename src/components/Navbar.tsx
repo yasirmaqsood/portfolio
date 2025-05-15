@@ -30,7 +30,7 @@ export function Navbar() {
     { href: `#${sectionIds.about}`, label: "About", id: sectionIds.about },
     { href: `#${sectionIds.experience}`, label: "Experience", id: sectionIds.experience },
     { href: `#${sectionIds.education}`, label: "Education", id: sectionIds.education },
-    { href: `#${sectionIds.projects}`, label: "Projects", id: sectionIds.projects },
+    { href: `#${sectionIds.projects}`, label: "Publications/Certifications", id: sectionIds.projects },
     { href: `#${sectionIds.skills}`, label: "Skills", id: sectionIds.skills },
     { href: `#${sectionIds.contact}`, label: "Contact", id: sectionIds.contact },
   ];
