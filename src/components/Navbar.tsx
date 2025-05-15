@@ -2,29 +2,37 @@
 
 import Link from "next/link";
 import { Menu, X, CodeXml } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
 import { sectionIds, portfolioData } from "@/lib/portfolio-data";
-import { useSearchParams } from "next/navigation"; // Import useSearchParams
+import { useSearchParams } from "next/navigation";
 
 interface NavItem {
   href: string;
   label: string;
-  id: string; // Add id for scroll spy
+  id: string;
 }
 
 const AI_ACCESS_KEY = "mode";
 const AI_ACCESS_VALUE = "developerPortfolioView";
 
-export function Navbar() {
-  const searchParams = useSearchParams(); // Get searchParams
-  const showAILink = searchParams.get(AI_ACCESS_KEY) === AI_ACCESS_VALUE;
+// Helper component to wrap useSearchParams in Suspense
+function ShowAILinkSetter({ setShowAILink }: { setShowAILink: (show: boolean) => void }) {
+  const searchParams = useSearchParams();
+  useEffect(() => {
+    setShowAILink(searchParams.get(AI_ACCESS_KEY) === AI_ACCESS_VALUE);
+    // eslint-disable-next-line
+  }, [searchParams]);
+  return null;
+}
 
+export function Navbar() {
   const [isSheetOpen, setIsSheetOpen] = useState(false);
   const [activeSection, setActiveSection] = useState(sectionIds.home);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [showAILink, setShowAILink] = useState(false);
 
   const baseNavItems: NavItem[] = [
     { href: `#${sectionIds.home}`, label: "Home", id: sectionIds.home },
@@ -39,7 +47,7 @@ export function Navbar() {
   const navItems = [...baseNavItems];
   if (showAILink) {
     navItems.push({
-      href: `#${sectionIds.aiTool}`, // Query param will persist if already in URL
+      href: `#${sectionIds.aiTool}`,
       label: "AI Tool",
       id: sectionIds.aiTool
     });
@@ -48,9 +56,8 @@ export function Navbar() {
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
-      
+
       let currentSection = sectionIds.home;
-      // Iterate over navItems that are currently displayed
       for (const item of navItems) {
         const sectionElement = document.getElementById(item.id);
         if (sectionElement) {
@@ -65,10 +72,10 @@ export function Navbar() {
     };
 
     window.addEventListener("scroll", handleScroll);
-    handleScroll(); 
+    handleScroll();
 
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [navItems]); // Re-run effect if navItems changes (e.g. AI link shown/hidden)
+  }, [navItems]);
 
   const NavLink = ({ href, label, id, onClick, isSheetLink = false }: NavItem & { onClick?: () => void, isSheetLink?: boolean }) => (
     <Link href={href} legacyBehavior passHref>
@@ -90,6 +97,9 @@ export function Navbar() {
       "sticky top-0 z-50 w-full transition-all duration-300",
       isScrolled ? "bg-background/90 shadow-md backdrop-blur-sm" : "bg-transparent"
     )}>
+      <Suspense fallback={null}>
+        <ShowAILinkSetter setShowAILink={setShowAILink} />
+      </Suspense>
       <div className="container mx-auto flex h-16 items-center justify-between px-4 md:px-6">
         <Link href={`#${sectionIds.home}`} className="flex items-center gap-2">
           <CodeXml className="h-7 w-7 text-primary" />
@@ -117,7 +127,7 @@ export function Navbar() {
                   <span className="text-xl font-bold text-foreground">{portfolioData.contactInfo.name.split(' ')[0]}</span>
                 </Link>
                 <SheetClose asChild>
-                   <Button variant="ghost" size="icon">
+                  <Button variant="ghost" size="icon">
                     <X className="h-6 w-6" />
                     <span className="sr-only">Close navigation menu</span>
                   </Button>
