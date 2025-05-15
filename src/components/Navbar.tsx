@@ -7,7 +7,6 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
 import { sectionIds, portfolioData } from "@/lib/portfolio-data";
-import { useSearchParams } from "next/navigation";
 
 interface NavItem {
   href: string;
@@ -19,14 +18,7 @@ const AI_ACCESS_KEY = "mode";
 const AI_ACCESS_VALUE = "developerPortfolioView";
 
 // Helper component to wrap useSearchParams in Suspense
-function ShowAILinkSetter({ setShowAILink }: { setShowAILink: (show: boolean) => void }) {
-  const searchParams = useSearchParams();
-  useEffect(() => {
-    setShowAILink(searchParams.get(AI_ACCESS_KEY) === AI_ACCESS_VALUE);
-    // eslint-disable-next-line
-  }, [searchParams]);
-  return null;
-}
+
 
 export function Navbar() {
   const [isSheetOpen, setIsSheetOpen] = useState(false);
@@ -97,9 +89,7 @@ export function Navbar() {
       "sticky top-0 z-50 w-full transition-all duration-300",
       isScrolled ? "bg-background/90 shadow-md backdrop-blur-sm" : "bg-transparent"
     )}>
-      <Suspense fallback={null}>
-        <ShowAILinkSetter setShowAILink={setShowAILink} />
-      </Suspense>
+      
       <div className="container mx-auto flex h-16 items-center justify-between px-4 md:px-6">
         <Link href={`#${sectionIds.home}`} className="flex items-center gap-2">
           <CodeXml className="h-7 w-7 text-primary" />
