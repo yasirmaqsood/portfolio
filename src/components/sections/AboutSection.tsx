@@ -13,12 +13,7 @@ export function AboutSection() {
         <SectionTitle icon={UserCircle}>About Me</SectionTitle>
         <div className="grid md:grid-cols-1 gap-8 items-center">
           <Card className="shadow-lg hover:shadow-xl transition-shadow duration-300">
-            <CardHeader>
-              <CardTitle className="text-2xl text-primary flex items-center gap-2">
-                <Target className="h-6 w-6 text-accent" />
-                My Mission
-              </CardTitle>
-            </CardHeader>
+            
             <CardContent className="space-y-4">
               <p className="text-lg text-foreground/90 leading-relaxed text-justify">
                 {aboutMe.description}
