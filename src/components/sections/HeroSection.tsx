@@ -22,7 +22,7 @@ export function HeroSection() {
             {contactInfo.title}
           </p>
           <p className="text-foreground/80 leading-relaxed max-w-xl mx-auto md:mx-0 text-justify">
-            {aboutMe.description}
+            
           </p>
           <div className="flex flex-wrap gap-2 justify-center md:justify-start">
             {aboutMe.keywords.map((keyword) => (
